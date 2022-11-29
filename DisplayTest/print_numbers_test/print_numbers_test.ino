@@ -20,14 +20,14 @@ LCDWIKI_KBV lcd(ILI9341,A3,A2,A1,A0,A4); //model,cs,cd,wr,rd,reset
 #define LABEL_COLOR WHITE
 #define NUMBER_COLOR GREEN
 
-#define ORIGIN_X 10
+#define ORIGIN_X 30
 #define ORIGIN_Y 15
 #define LINE_SPACING 40
 
 double temp = 20.56;
 double ph = 7.0;
 double phosphate = 1.0;
-double ammonia = 1.0;
+double ammonia = 2.0;
 
 void printConstantText(){
   lcd.Set_Text_colour(LABEL_COLOR);
@@ -38,7 +38,7 @@ void printConstantText(){
   lcd.Print_String("Ammonia:", ORIGIN_X, ORIGIN_Y + 3*LINE_SPACING);
 
   lcd.Set_Text_Size(1);
-  lcd.Print_String("Aquaponics Monitoring System V0", ORIGIN_X+10, 300);
+  lcd.Print_String("Aquaponics Monitoring System V0", 70, 210);
 }
 
 // Display all of the numbers
@@ -47,17 +47,21 @@ void update()
   lcd.Set_Text_colour(NUMBER_COLOR);
   lcd.Set_Text_Size(3);
   // Temp
-  lcd.Print_Number_Float(temp,2,100, ORIGIN_Y, '.', 0, ' ');
+  lcd.Print_Number_Float(temp,2,ORIGIN_X + 90, ORIGIN_Y, '.', 0, ' ');
   // PH
   lcd.Print_Number_Float(ph, 2, ORIGIN_X + 60, ORIGIN_Y + 1*LINE_SPACING, '.', 0, ' ');
+  // Phosphate
+  lcd.Print_Number_Float(phosphate, 2, ORIGIN_X + 180, ORIGIN_Y + 2*LINE_SPACING, '.', 0, ' ');
+  // Ammonia
+  lcd.Print_Number_Float(ammonia, 2, ORIGIN_X + 150, ORIGIN_Y + 3*LINE_SPACING, '.', 0, ' ');
 }
 
-
+// Configure the screen and place the constant text in setup
 void setup(){
   Serial.begin(9600);
   lcd.Init_LCD();
   Serial.println(lcd.Read_ID(), HEX);
-  lcd.Set_Rotation(2);
+  lcd.Set_Rotation(1);
   lcd.Fill_Screen(BLACK);
   lcd.Set_Text_Mode(0);
   lcd.Set_Text_Back_colour(BLACK);
@@ -67,8 +71,11 @@ void setup(){
 
 void loop() 
 {
+    // Change the numbers to test if that works
     update();
     delay(3000);
     temp++;
     ph += 0.1;
+    phosphate += 0.1;
+    ammonia += 0.1;
 }
