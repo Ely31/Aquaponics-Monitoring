@@ -1,0 +1,5 @@
+{
+    "board": "arduino:avr:uno",
+    "sketch": "DisplayTest/print_numbers_test/print_numbers_test.ino",
+    "port": "/dev/ttyUSB0"
+}
