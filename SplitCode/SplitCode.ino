@@ -1,17 +1,18 @@
-#include <OneWire.h>
-#include <DallasTemperature.h>
 #include "Sensors.h"
+#include "Display.h"
 
-void setup(void)
-{
+void setup(void){
 // start serial port so we can see the data
 Serial.begin(9600);
 
 startTempSensor();
+setupDisplay();
 }
 
-void loop(void)
-{
+void loop(void){
+setSensorValues(getSensorTemp(), getPH(), getPhosphate());
+updateValues();
+  
 Serial.print("Temperature: ");
 Serial.print(getSensorTemp());
 Serial.println();
