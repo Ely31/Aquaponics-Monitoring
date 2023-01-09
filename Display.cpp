@@ -26,13 +26,13 @@ Adafruit_ILI9341 lcd = Adafruit_ILI9341(10, 9); //model,cs,cd,wr,rd,reset
 
 double temp = 20.56;
 double ph = 7.0;
-double phosphate = 1.0;
+double potassium = 1.0;
 double ammonia = 2.0;
 
-void setSensorValues(float temp_, float ph_, float phosphate_){
+void setSensorValues(float temp_, float ph_, float potassium_){
   temp = temp_;
   ph = ph_;
-  phosphate = phosphate_;
+  potassium = potassium_;
   // ammonia = ammonia_;
 }
 
@@ -45,7 +45,7 @@ void printConstantText(){
   lcd.setCursor(ORIGIN_X, ORIGIN_Y + TEXT_HEIGHT*1);
   lcd.print("PH:");
   lcd.setCursor(ORIGIN_X, ORIGIN_Y + TEXT_HEIGHT*2);
-  lcd.print("Phosphate:");
+  lcd.print("Potassium:");
   lcd.setCursor(ORIGIN_X, ORIGIN_Y + TEXT_HEIGHT*3);
   lcd.print("Ammonia:");
 
@@ -75,7 +75,7 @@ void updateValues(){
   lcd.setCursor(NUMBERS_ORIGIN_X, ORIGIN_Y + TEXT_HEIGHT *1);
   lcd.print(ph);
   lcd.setCursor(NUMBERS_ORIGIN_X, ORIGIN_Y + TEXT_HEIGHT *2);
-  lcd.print(phosphate);
+  lcd.print(potassium);
   lcd.setCursor(NUMBERS_ORIGIN_X, ORIGIN_Y + TEXT_HEIGHT *3);
   lcd.print(ammonia);
 }

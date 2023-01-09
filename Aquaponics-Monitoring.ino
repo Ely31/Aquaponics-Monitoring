@@ -10,7 +10,7 @@ setupDisplay();
 }
 
 void loop(void){
-setSensorValues(getSensorTemp(), getPH(), getPhosphate());
+setSensorValues(getSensorTemp(), getPH(), getPotassium());
 updateValues();
   
 Serial.print("Temperature: ");
@@ -19,8 +19,8 @@ Serial.println();
 Serial.print("PH: "); 
 Serial.print(getPH());
 Serial.println();
-Serial.print("Phosphate: ");
-Serial.print(getPhosphate());
+Serial.print("Potassium: ");
+Serial.print(getPotassium());
 delay(1000);
 }
  

@@ -1,6 +1,6 @@
 // All the sensors
 float getPH();
-float getPhosphate();
+float getPotassium();
 
 void startTempSensor();
 float getSensorTemp();
