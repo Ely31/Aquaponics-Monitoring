@@ -19,10 +19,10 @@ Adafruit_ILI9341 lcd = Adafruit_ILI9341(10, 9); //model,cs,cd,wr,rd,reset
 #define NUMBER_COLOR GREEN
 
 #define ORIGIN_X 20
-#define ORIGIN_Y 15
+#define ORIGIN_Y 40
 #define NUMBERS_ORIGIN_X 200
 
-#define TEXT_HEIGHT 40
+#define TEXT_HEIGHT 50
 
 double temp = 20.56;
 double ph = 7.0;
@@ -46,8 +46,6 @@ void printConstantText(){
   lcd.print("PH:");
   lcd.setCursor(ORIGIN_X, ORIGIN_Y + TEXT_HEIGHT*2);
   lcd.print("Potassium:");
-  lcd.setCursor(ORIGIN_X, ORIGIN_Y + TEXT_HEIGHT*3);
-  lcd.print("Ammonia:");
 
   lcd.setCursor(70, 210);
   lcd.setTextSize(1);
@@ -76,6 +74,4 @@ void updateValues(){
   lcd.print(ph);
   lcd.setCursor(NUMBERS_ORIGIN_X, ORIGIN_Y + TEXT_HEIGHT *2);
   lcd.print(potassium);
-  lcd.setCursor(NUMBERS_ORIGIN_X, ORIGIN_Y + TEXT_HEIGHT *3);
-  lcd.print(ammonia);
 }

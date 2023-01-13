@@ -12,8 +12,8 @@ DallasTemperature tempSensor(&oneWire);
 
 // Ph stuff
 #define phPin A0
-#define phOffset -0.4
-#define phConstant (14.0/1023.0)
+#define phOffset 25.51
+#define phConstant -0.02955
 
 // Phosphate stuff
 #define potassiumPin A1
@@ -30,7 +30,7 @@ float getSensorTemp(){
 }
 
 float getPH(){
-  return (analogRead(phPin) * phConstant) - phOffset;
+  return ((analogRead(phPin) * phConstant) + phOffset);
 }
 
 float getPotassium(){

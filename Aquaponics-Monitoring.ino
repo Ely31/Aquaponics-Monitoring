@@ -12,7 +12,8 @@ setupDisplay();
 void loop(void){
 setSensorValues(getSensorTemp(), getPH(), getPotassium());
 updateValues();
-  
+
+// Print to serial for debugging or if the screen breaks
 Serial.print("Temperature: ");
 Serial.print(getSensorTemp());
 Serial.println();
